@@ -13,22 +13,26 @@ class NameGenerator(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.title = tk.Label(self, text="Generator imion", font="Arial 20 bold", fg="#6f02a6", pady=20)
+        self.title = tk.Label(self, text="Generator imion", 
+                            font="Arial 20 bold", fg="#6f02a6", pady=20)
         self.title.grid(row=0, column=0, columnspan=2)
 
-        self.name_label = tk.Label(self, text="Imię...", font="Arial 14", pady=10)
+        self.name_label = tk.Label(self,text="Imię...",font="Arial 14",pady=10)
         self.name_label.grid(row=1, column=0)
 
         self.radiobutton = tk.StringVar()
-        self.f_radio = tk.Radiobutton(self, text="damskie", value="female", variable=self.radiobutton, font="Arial 12")
+        self.f_radio = tk.Radiobutton(self, text="damskie", value="female", 
+            variable=self.radiobutton, font="Arial 12")
         self.f_radio.grid(row=2, column=0, sticky="w")
-        self.m_radio = tk.Radiobutton(self, text="męskie", value="male", variable=self.radiobutton, font="Arial 12")
+        self.m_radio = tk.Radiobutton(self, text="męskie", value="male", 
+            variable=self.radiobutton, font="Arial 12")
         self.m_radio.grid(row=3, column=0, sticky="w")
 
-        self.info_label = tk.Label(self, text=" ", font="Arial 10", fg="#6f02a6")
+        self.info_label = tk.Label(self,text=" ", font="Arial 10",fg="#6f02a6")
         self.info_label.grid(row=4, column=0)
 
-        self.draw_button = tk.Button(self, text="Losuj", command=self.draw_name, font="Arial 12", bg="#6f02a6", fg="#e7e3e8", padx=10, pady=5)
+        self.draw_button = tk.Button(self,text="Losuj", command=self.draw_name,
+            font="Arial 12", bg="#6f02a6", fg="#e7e3e8", padx=10, pady=5)
         self.draw_button.grid(row=5, column=0, pady=10)
 
         self.name_var = tk.StringVar()
