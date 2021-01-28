@@ -23,10 +23,10 @@ class NameGenerator(tk.Frame):
         self.radiobutton = tk.StringVar()
         self.f_radio = tk.Radiobutton(self, text="damskie", value="female", 
             variable=self.radiobutton, font="Arial 12")
-        self.f_radio.grid(row=2, column=0, sticky="w")
+        self.f_radio.grid(row=2, column=0, sticky="w", padx=10)
         self.m_radio = tk.Radiobutton(self, text="męskie", value="male", 
             variable=self.radiobutton, font="Arial 12")
-        self.m_radio.grid(row=3, column=0, sticky="w")
+        self.m_radio.grid(row=3, column=0, sticky="w", padx=10)
 
         self.info_label = tk.Label(self,text=" ", font="Arial 10",fg="#6f02a6")
         self.info_label.grid(row=4, column=0)
@@ -36,8 +36,9 @@ class NameGenerator(tk.Frame):
         self.draw_button.grid(row=5, column=0, pady=10)
 
         self.name_var = tk.StringVar()
-        self.name_entry = tk.Entry(self, text=self.name_var, font="Arial 14")
-        self.name_entry.grid(row=1, column=1)
+        self.name_entry = tk.Entry(self, text=self.name_var, 
+                                font="Arial 14", width=18)
+        self.name_entry.grid(row=1, column=1, padx=10)
 
     def draw_name(self):
         r_btn = self.radiobutton.get()
