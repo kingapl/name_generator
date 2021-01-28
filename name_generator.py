@@ -18,10 +18,10 @@ class NameGenerator(tk.Frame):
         self.name_label = tk.Label(self, text="Imię...", font="Arial 12", pady=10)
         self.name_label.grid(row=1, column=0)
 
-        #self.radiobutton_var = tk.StringVar()
-        self.f_radio = tk.Radiobutton(self, text="damskie", value=1)
+        self.radiobutton = tk.StringVar()
+        self.f_radio = tk.Radiobutton(self, text="damskie", value="female", variable=self.radiobutton)
         self.f_radio.grid(row=2, column=0)
-        self.m_radio = tk.Radiobutton(self, text="męskie", value=2)
+        self.m_radio = tk.Radiobutton(self, text="męskie", value="male", variable=self.radiobutton)
         self.m_radio.grid(row=3, column=0)
 
         self.draw_button = tk.Button(self, text="Losuj", command=self.draw_name, font="Arial 12", bg="#6f02a6", fg="#e7e3e8")
@@ -33,29 +33,26 @@ class NameGenerator(tk.Frame):
 
 
     def draw_name(self):
+        r_btn = self.radiobutton.get()
+        
         letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
                     "Ł", "M", "N", "O", "P", "R", "S", "T", "U", "W", "Z", "Ż"]
-        #print(len(letters))
+
         letter = choice(letters)
-        #print(letter)
         names = []
 
-        with open('female_names.csv', 'r') as female_names:
-            reader = csv.DictReader(female_names, delimiter=';')
+        if r_btn:
+            with open(f'{r_btn}_names.csv', 'r') as names_file:
+                reader = csv.DictReader(names_file, delimiter=';')
 
-            for row in reader:
-                #print(row[letter])
-                if row[letter] != '':
-                    names.append(row[letter])
-                else:
-                    break
+                for row in reader:
+                    if row[letter] != '':
+                        names.append(row[letter])
+                    else:
+                        break
 
-        #print(names)
-        #print(len(names))
-
-        self.name = choice(names)
-        #print(self.name)
-        self.name_var.set(self.name)
+            self.name = choice(names)
+            self.name_var.set(self.name)
 
 
 root = tk.Tk()
