@@ -1,4 +1,6 @@
 import tkinter as tk
+import csv
+from random import choice
 
 class NameGenerator(tk.Frame):
     def __init__(self, master=None):
@@ -22,11 +24,38 @@ class NameGenerator(tk.Frame):
         self.m_radio = tk.Radiobutton(self, text="męskie", value=2)
         self.m_radio.grid(row=3, column=0)
 
-        self.draw_button = tk.Button(self, text="Losuj")
+        self.draw_button = tk.Button(self, text="Losuj", command=self.draw_name)
         self.draw_button.grid(row=4, column=0)
 
-        self.name_entry = tk.Entry(self)
+        self.name_var = tk.StringVar()
+        self.name_entry = tk.Entry(self, text=self.name_var)
         self.name_entry.grid(row=1, column=1)
+
+
+    def draw_name(self):
+        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
+                    "Ł", "M", "N", "O", "P", "R", "S", "T", "U", "W", "Z", "Ż"]
+        #print(len(letters))
+        letter = choice(letters)
+        #print(letter)
+        names = []
+
+        with open('female_names.csv', 'r') as female_names:
+            reader = csv.DictReader(female_names, delimiter=';')
+
+            for row in reader:
+                #print(row[letter])
+                if row[letter] != '':
+                    names.append(row[letter])
+                else:
+                    break
+
+        #print(names)
+        #print(len(names))
+
+        self.name = choice(names)
+        #print(self.name)
+        self.name_var.set(self.name)
 
 
 root = tk.Tk()
