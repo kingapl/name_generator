@@ -35,8 +35,9 @@ class NameGenerator(tk.Frame):
     def draw_name(self):
         r_btn = self.radiobutton.get()
         
-        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
-                    "Ł", "M", "N", "O", "P", "R", "S", "T", "U", "W", "Z", "Ż"]
+        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
+                    "J", "K", "L", "Ł", "M", "N", "O", "P", 
+                    "R", "S", "Ś", "T", "U", "W", "Z", "Ż"]
 
         letter = choice(letters)
         names = []
