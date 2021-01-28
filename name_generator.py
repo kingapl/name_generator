@@ -12,10 +12,10 @@ class NameGenerator(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.title = tk.Label(self, text="Generator imion")
+        self.title = tk.Label(self, text="Generator imion", font="Arial 20 bold", fg="#6f02a6", pady=20)
         self.title.grid(row=0, column=0, columnspan=2)
 
-        self.name_label = tk.Label(self, text="Imię...")
+        self.name_label = tk.Label(self, text="Imię...", font="Arial 12", pady=10)
         self.name_label.grid(row=1, column=0)
 
         #self.radiobutton_var = tk.StringVar()
@@ -24,11 +24,11 @@ class NameGenerator(tk.Frame):
         self.m_radio = tk.Radiobutton(self, text="męskie", value=2)
         self.m_radio.grid(row=3, column=0)
 
-        self.draw_button = tk.Button(self, text="Losuj", command=self.draw_name)
-        self.draw_button.grid(row=4, column=0)
+        self.draw_button = tk.Button(self, text="Losuj", command=self.draw_name, font="Arial 12", bg="#6f02a6", fg="#e7e3e8")
+        self.draw_button.grid(row=4, column=0, pady=10)
 
         self.name_var = tk.StringVar()
-        self.name_entry = tk.Entry(self, text=self.name_var)
+        self.name_entry = tk.Entry(self, text=self.name_var, font="Arial 12")
         self.name_entry.grid(row=1, column=1)
 
 
